@@ -1,19 +1,14 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+/*
+The main app exported to the phone. This should not be changed be changed
+unless we need to edit how the app initialises
+*/
 
-export default function App() {
+import React, {Component} from 'react';
+import Expo from 'expo';
+import Navigator from './routes/MainRoute'
+
+export default function App(){
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
-  );
+    <Navigator />
+  )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
