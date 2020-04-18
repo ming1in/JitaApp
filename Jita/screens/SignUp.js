@@ -11,6 +11,7 @@ import {
   TextInput,
   Button,
   TouchableOpacity} from 'react-native';
+import { UserAuthInput } from '../components/UserAuthInput';
 
 export default function SignUp(){
   const [name, inputName] = React.useState('');
@@ -21,33 +22,9 @@ export default function SignUp(){
     <View style={styles.container}>
       <Text style={styles.titleText}>Sign Up</Text>
       <View style={styles.signUpSheet}>
-        <TextInput
-          style={styles.name}
-          onChangeText={text => inputName(text)}
-          value={name}
-          mode='flat'
-          label='Name'
-          placeholder="Your Name"
-          placeholderTextColor='white'
-        />
-        <TextInput
-          style={styles.user}
-          onChangeText={text => inputUser(text)}
-          value={user}
-          mode='flat'
-          label='User'
-          placeholder="Email"
-          placeholderTextColor='white'
-        />
-        <TextInput
-          style={styles.pass}
-          onChangeText={text => inputPass(text)}
-          value={pass}
-          mode='flat'
-          label='Password'
-          placeholder="Password"
-          placeholderTextColor='white'
-        />
+        <UserAuthInput text="Your Name" textColor='white'/>
+        <UserAuthInput text="Email" textColor='white'/>
+        <UserAuthInput text="Password" textColor='white'/>
       </View>
       <View style={{top:110}}>
         <Text>Not sure what we want to do for the student check box</Text>
@@ -77,39 +54,6 @@ const styles = StyleSheet.create({
     width: '80%',
     alignItems: 'center',
     top: 90,
-  },
-  name: {
-    alignItems: 'center',
-    fontSize: 20,
-    margin: 10,
-    paddingLeft: 10,
-    width: '100%',
-    height: 50,
-    color: 'white',
-    borderBottomWidth: 1,
-    borderBottomColor: 'white',
-  },
-  user: {
-    alignItems: 'center',
-    fontSize: 20,
-    margin: 10,
-    paddingLeft: 10,
-    width: '100%',
-    height: 50,
-    color: 'white',
-    borderBottomWidth: 1,
-    borderBottomColor: 'white',
-  },
-  pass: {
-    alignItems: 'center',
-    fontSize: 20,
-    margin: 10,
-    paddingLeft: 10,
-    width: '100%',
-    height: 50,
-    color: 'white',
-    borderBottomWidth: 1,
-    borderBottomColor: 'white',
   },
   signUpButton: {
     height: 45,
