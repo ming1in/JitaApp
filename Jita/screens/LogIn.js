@@ -20,8 +20,8 @@ export default function LogIn({navigation}) {
         <Text style={styles.text}>Jita</Text>
       </View>
       <View style={styles.login}>
-        <UserAuthInput text="Email"/>
-        <UserAuthInput text="Password"/>
+        <UserAuthInput placeholder="Email"/>
+        <UserAuthInput placeholder="Password" secure={true}/>
       </View>
       <View style={[{width:"80%", top:160}]}>
         <Button

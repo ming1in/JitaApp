@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { StyleSheet, Text, View, TextInput, Button} from 'react-native';
+import * as firebase from 'firebase';
 
 const UserAuthInput = (props) => {
   const [name, inputName] = React.useState('');
@@ -7,11 +8,13 @@ const UserAuthInput = (props) => {
   return (
     <TextInput
       style={styles.userAuth}
+      autoCorrect={false}
       onChangeText={text => inputName(text)}
       value={name}
       mode='flat'
-      placeholder={props.text}
+      placeholder={props.placeholder}
       placeholderTextColor={props.textColor}
+      secureTextEntry={props.secure}
     />
   )
 }

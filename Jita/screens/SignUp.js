@@ -22,9 +22,9 @@ export default function SignUp(){
     <View style={styles.container}>
       <Text style={styles.titleText}>Sign Up</Text>
       <View style={styles.signUpSheet}>
-        <UserAuthInput text="Your Name" textColor='white'/>
-        <UserAuthInput text="Email" textColor='white'/>
-        <UserAuthInput text="Password" textColor='white'/>
+        <UserAuthInput placeholder="Your Name" textColor='white'/>
+        <UserAuthInput placeholder="Email" textColor='white'/>
+        <UserAuthInput placeholder="Password" textColor='white' secure={true}/>
       </View>
       <View style={{top:110}}>
         <Text>Not sure what we want to do for the student check box</Text>
