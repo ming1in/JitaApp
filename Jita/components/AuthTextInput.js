@@ -1,12 +1,23 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, Button} from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, ShadowPropTypesIOS} from 'react-native';
 import { Ionicons } from '@expo/vector-icons'
 
 const AuthTextInput = (props) => {
 
   return (
-    <View style={styles.authTextInput}>
-      {props.children}
+    <View style={{...styles.authTextInput, ...props.styles}}>
+      <View style={styles.iconContainer}>
+        <Ionicons name={props.icon} size={25} color="white" />
+      </View>
+      <View style={styles.textInputContainer}>
+        <TextInput
+          style={styles.textInput}
+          onChangeText={props.onChangeText}
+          placeholder={props.placeholder}
+          placeholderTextColor={props.placeholderTextColor}
+          secureTextEntry={props.secureTextEntry}
+        />
+      </View>
     </View>
   )
 }
@@ -28,6 +39,16 @@ const styles = StyleSheet.create({
   },
   textInputContainer: {
     alignContent:'center',
+    justifyContent: 'flex-start',
+    marginBottom: 15
+  },
+  iconContainer: {
+    marginRight: 20,
+    marginBottom: 13,
+    width: 20
+  },
+  textInputContainer: {
+    alignContent: 'center',
     justifyContent: 'flex-start',
     marginBottom: 15
   },

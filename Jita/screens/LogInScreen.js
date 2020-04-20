@@ -43,34 +43,19 @@ const LogInScreen = (props) => {
 					<Text style={styles.title}>Jita</Text>
 				</View>
 				<View style={styles.loginContainer}>
-					<AuthTextInput>
-						<View style={styles.iconContainer}>
-							<Ionicons name="ios-mail" size={25} color="white" />
-						</View>
-						<View style={styles.textInputContainer}>
-							<TextInput
-								style={styles.textInput}
-								onChangeText={emailHandler}
-								placeholder="Email"
-								placeholderTextColor={Colors.lightGrey}
-							/>
-						</View>
-					</AuthTextInput>
-
-					<AuthTextInput>
-						<View style={styles.iconContainer}>
-							<Ionicons name="ios-lock" size={25} color="white" />
-						</View>
-						<View style={styles.textInputContainer}>
-							<TextInput
-								style={styles.textInput}
-								onChangeText={passwordHandler}
-								placeholder="Password"
-								placeholderTextColor={Colors.lightGrey}
-								secureTextEntry={true}
-							/>
-						</View>
-					</AuthTextInput>
+					<AuthTextInput
+						onChangeText={emailHandler}
+						placeholder="Email"
+						icon="ios-mail"
+						placeholderTextColor={Colors.lightGrey}
+					/>
+					<AuthTextInput
+						onChangeText={passwordHandler}
+						placeholder='Password'
+						icon='ios-lock'
+						placeholderTextColor={Colors.lightGrey}
+						secureTextEntry={true}
+					/>
 				</View>
 
 				<View style={styles.logInButtonContainer}>
@@ -147,16 +132,6 @@ const styles = StyleSheet.create({
 	textInput: {
 		color: 'white',
 		fontSize: 18
-	},
-	textInputContainer: {
-		alignContent: 'center',
-		justifyContent: 'flex-start',
-		marginBottom: 15
-	},
-	iconContainer: {
-		marginRight: 20,
-		marginBottom: 13,
-		width: 20
 	}
 });
 

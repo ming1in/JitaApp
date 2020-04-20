@@ -49,49 +49,26 @@ const SignUpScreen = (props) => {
 		>
 			<View style={styles.screen}>
 				<Text style={styles.title}>Sign Up</Text>
-
 				<View style={styles.signUpContainer}>
-					<AuthTextInput>
-						<View style={styles.iconContainer}>
-							<Ionicons name="md-person" size={25} color="white" />
-						</View>
-						<View style={styles.textInputContainer}>
-							<TextInput
-								style={styles.textInput}
-								onChangeText={nameHandler}
-								placeholder="Name"
-								placeholderTextColor="white"
-							/>
-						</View>
-					</AuthTextInput>
-
-					<AuthTextInput>
-						<View style={styles.iconContainer}>
-							<Ionicons name="ios-mail" size={25} color="white" />
-						</View>
-						<View style={styles.textInputContainer}>
-							<TextInput
-								style={styles.textInput}
-								onChangeText={emailHandler}
-								placeholder="Email"
-								placeholderTextColor="white"
-							/>
-						</View>
-					</AuthTextInput>
-
-					<AuthTextInput>
-						<View style={styles.iconContainer}>
-							<Ionicons name="ios-lock" size={25} color="white" />
-						</View>
-						<View style={styles.textInputContainer}>
-							<TextInput
-								style={styles.textInput}
-								onChangeText={passwordHandler}
-								placeholder="Password"
-								placeholderTextColor="white"
-							/>
-						</View>
-					</AuthTextInput>
+					<AuthTextInput
+						onChangeText={nameHandler}
+						icon='md-person'
+						placeholder='Name'
+						placeholderTextColor='white'
+					/>
+					<AuthTextInput
+						onChangeText={emailHandler}
+						icon='ios-mail'
+						placeholder='Email'
+						placeholderTextColor='white'
+					/>
+					<AuthTextInput
+						onChangeText={passwordHandler}
+						icon='ios-lock'
+						placeholder='Password'
+						placeholderTextColor='white'
+						secureTextEntry={true}
+					/>
 
 					<View style={styles.studentContainer}>
 						<Ionicons name="md-school" size={25} color="white" />
