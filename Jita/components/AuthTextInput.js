@@ -16,6 +16,8 @@ const AuthTextInput = (props) => {
           placeholder={props.placeholder}
           placeholderTextColor={props.placeholderTextColor}
           secureTextEntry={props.secureTextEntry}
+          keyboardType={props.keyboardType}
+          value={props.value}
         />
       </View>
     </View>
@@ -30,16 +32,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderBottomWidth: 1,
     borderBottomColor: 'white',
-    margin: 20,
-    paddingLeft: 5
+    paddingLeft: 5,
+    marginVertical: 20
   },
   textInput: {
     color: 'white',
     fontSize: 18,
+    width: '100%'
   },
   textInputContainer: {
-    alignContent:'center',
-    justifyContent: 'flex-start',
+    flex: 1,
+    alignItems:'center',
+    justifyContent: 'center',
     marginBottom: 15
   },
   iconContainer: {
@@ -47,16 +51,6 @@ const styles = StyleSheet.create({
     marginBottom: 13,
     width: 20
   },
-  textInputContainer: {
-    alignContent: 'center',
-    justifyContent: 'flex-start',
-    marginBottom: 15
-  },
-  iconContainer: {
-    marginRight: 20,
-    marginBottom: 13,
-    width: 20
-  }
 });
 
 export default AuthTextInput

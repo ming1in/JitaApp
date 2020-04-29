@@ -4,13 +4,14 @@ import {
 	View,
 	Text,
 	Button,
-	TextInput,
 	TouchableWithoutFeedback,
 	Switch,
 	Keyboard,
 	KeyboardAvoidingView
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import firebase from 'firebase';
+import 'firebase/firestore';
 
 import AuthTextInput from '../components/AuthTextInput';
 import Colors from '../constants/Colors';
@@ -18,28 +19,19 @@ import Colors from '../constants/Colors';
 const SignUpScreen = (props) => {
 	const [ name, setName ] = useState('');
 	const [ email, setEmail ] = useState('');
-	const [ password, setpassword ] = useState('');
+	const [ password, setPassword ] = useState('');
 	const [ student, setStudent ] = useState(false);
 
-	const nameHandler = (name) => {
-		setName(name);
-	};
-
-	const emailHandler = (email) => {
-		setEmail(email);
-	};
-
-	const passwordHandler = (password) => {
-		setpassword(password);
-	};
-
 	const signUpHandler = () => {
-		console.log(name);
-		console.log(email);
-		console.log(password);
-		console.log(student);
-		props.navigation.navigate('Home');
-	};
+		firebase
+			.auth()
+			.createUserWithEmailAndPassword(email, password)
+			.then(() => 
+				props.navigation.navigate('Loading'))
+			.catch((error) => {
+				alert(error)
+			})
+	}
 
 	return (
 		<TouchableWithoutFeedback
@@ -47,27 +39,31 @@ const SignUpScreen = (props) => {
 				Keyboard.dismiss();
 			}}
 		>
-			<View style={styles.screen}>
+			<KeyboardAvoidingView style={styles.screen} behavior="padding">
 				<Text style={styles.title}>Sign Up</Text>
 				<View style={styles.signUpContainer}>
 					<AuthTextInput
-						onChangeText={nameHandler}
-						icon='md-person'
-						placeholder='Name'
-						placeholderTextColor='white'
+						onChangeText={(name) => setName(name)}
+						icon="md-person"
+						placeholder="Name"
+						placeholderTextColor="white"
+						value={name}
 					/>
 					<AuthTextInput
-						onChangeText={emailHandler}
-						icon='ios-mail'
-						placeholder='Email'
-						placeholderTextColor='white'
+						onChangeText={(email) => setEmail(email)}
+						icon="ios-mail"
+						placeholder="Email"
+						placeholderTextColor="white"
+						keyboardType='email-address'
+						value={email}
 					/>
 					<AuthTextInput
-						onChangeText={passwordHandler}
-						icon='ios-lock'
-						placeholder='Password'
-						placeholderTextColor='white'
+						onChangeText={(password) => setPassword(password)}
+						icon="ios-lock"
+						placeholder="Password"
+						placeholderTextColor="white"
 						secureTextEntry={true}
+						value={password}
 					/>
 
 					<View style={styles.studentContainer}>
@@ -87,9 +83,7 @@ const SignUpScreen = (props) => {
 						style={styles.signUpButton}
 						title="Sign Up"
 						color="white"
-						onPress={() => {
-							signUpHandler();
-						}}
+						onPress={signUpHandler}
 					/>
 				</View>
 
@@ -98,13 +92,13 @@ const SignUpScreen = (props) => {
 					<Text
 						style={styles.logInButton}
 						onPress={() => {
-							props.navigation.navigate('Login');
+							props.navigation.navigate('LogIn');
 						}}
 					>
 						Log in
 					</Text>
 				</View>
-			</View>
+			</KeyboardAvoidingView>
 		</TouchableWithoutFeedback>
 	);
 };

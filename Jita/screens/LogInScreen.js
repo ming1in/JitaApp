@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
 	StyleSheet,
 	View,
 	Text,
-	TextInput,
 	Button,
 	TouchableWithoutFeedback,
 	Keyboard,
-	KeyboardAvoidingView
+	KeyboardAvoidingView,
+	Alert
 } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import firebase from 'firebase';
+import 'firebase/firestore';
 
 import AuthTextInput from '../components/AuthTextInput';
 import Colors from '../constants/Colors';
@@ -18,18 +19,16 @@ const LogInScreen = (props) => {
 	const [ email, setEmail ] = useState('');
 	const [ password, setPassword ] = useState('');
 
-	const emailHandler = (email) => {
-		setEmail(email);
-	};
-
-	const passwordHandler = (password) => {
-		setPassword(password);
-	};
-
 	const logInHandler = () => {
-		console.log(email);
-		console.log(password);
-		props.navigation.navigate('Home');
+		firebase
+			.auth()
+			.signInWithEmailAndPassword(email, password)
+			.then((user) => 
+				props.navigation.navigate('Loading')
+			)
+			.catch((error) => {
+				alert(error)
+			});
 	};
 
 	return (
@@ -38,34 +37,31 @@ const LogInScreen = (props) => {
 				Keyboard.dismiss();
 			}}
 		>
-			<View style={styles.screen}>
+			<KeyboardAvoidingView style={styles.screen} behavior="padding">
 				<View style={styles.titleContainer}>
 					<Text style={styles.title}>Jita</Text>
 				</View>
 				<View style={styles.loginContainer}>
 					<AuthTextInput
-						onChangeText={emailHandler}
+						onChangeText={(email) => setEmail(email)}
+						value={email}
 						placeholder="Email"
 						icon="ios-mail"
 						placeholderTextColor={Colors.lightGrey}
+						keyboardType="email-address"
 					/>
 					<AuthTextInput
-						onChangeText={passwordHandler}
-						placeholder='Password'
-						icon='ios-lock'
+						onChangeText={(password) => setPassword(password)}
+						value={password}
+						placeholder="Password"
+						icon="ios-lock"
 						placeholderTextColor={Colors.lightGrey}
 						secureTextEntry={true}
 					/>
 				</View>
 
 				<View style={styles.logInButtonContainer}>
-					<Button
-						title="Log In"
-						color="#97969D"
-						onPress={() => {
-							logInHandler();
-						}}
-					/>
+					<Button title="Log In" color="#97969D" onPress={logInHandler} />
 				</View>
 
 				<View style={styles.forgotContainer}>
@@ -83,7 +79,7 @@ const LogInScreen = (props) => {
 						Sign Up
 					</Text>
 				</View>
-			</View>
+			</KeyboardAvoidingView>
 		</TouchableWithoutFeedback>
 	);
 };
@@ -95,7 +91,7 @@ const styles = StyleSheet.create({
 		alignItems: 'center'
 	},
 	title: {
-		top: '330%',
+		top: '250%',
 		color: 'white',
 		fontSize: 72,
 		width: 'auto'
