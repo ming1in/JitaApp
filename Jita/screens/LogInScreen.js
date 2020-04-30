@@ -17,7 +17,7 @@ import Colors from '../constants/Colors';
 
 const LogInScreen = (props) => {
 	const [ email, setEmail ] = useState('');
-	const [ password, setPassword ] = useState('');
+	const [password, setPassword] = useState('');
 
 	const logInHandler = () => {
 		firebase

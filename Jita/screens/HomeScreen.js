@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, Button } from 'react-native';
 import firebase from 'firebase'
 import 'firebase/firestore';
 
@@ -14,6 +14,12 @@ const HomeScreen = (props) => {
 	return (
 		<View style={styles.screen}>
 			<Text>Hello Home Screen</Text>
+			<Button
+				title='ProfileScreen'
+				onPress={() => {
+					props.navigation.navigate('Profile')
+				}}
+			/>
 		</View>
 	);
 };
