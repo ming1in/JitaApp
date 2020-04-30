@@ -26,12 +26,17 @@ const SignUpScreen = (props) => {
 		firebase
 			.auth()
 			.createUserWithEmailAndPassword(email, password)
-			.then(() => 
-				props.navigation.navigate('Loading'))
-			.catch((error) => {
-				alert(error)
+			.then(() => {
+				if (student) {
+					props.navigation.navigate('Registration')
+				} else {
+					props.navigation.navigate('Home')
+				};
 			})
-	}
+			.catch((error) => {
+				alert(error);
+			});
+	};
 
 	return (
 		<TouchableWithoutFeedback
@@ -54,7 +59,7 @@ const SignUpScreen = (props) => {
 						icon="ios-mail"
 						placeholder="Email"
 						placeholderTextColor="white"
-						keyboardType='email-address'
+						keyboardType="email-address"
 						value={email}
 					/>
 					<AuthTextInput
@@ -72,19 +77,15 @@ const SignUpScreen = (props) => {
 						<Switch
 							value={student}
 							onValueChange={(student) => {
-								setStudent(student);
+								console.log(student)
+								setStudent(student)
 							}}
 						/>
 					</View>
 				</View>
 
 				<View style={styles.signUpButtonContainer}>
-					<Button
-						style={styles.signUpButton}
-						title="Sign Up"
-						color="white"
-						onPress={signUpHandler}
-					/>
+					<Button style={styles.signUpButton} title="Sign Up" color="white" onPress={signUpHandler} />
 				</View>
 
 				<View style={styles.logInContainer}>

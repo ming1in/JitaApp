@@ -44,7 +44,8 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems:'center',
     justifyContent: 'center',
-    marginBottom: 15
+    marginBottom: 15,
+    fontFamily: 'inter-bold'
   },
   iconContainer: {
     marginRight: 20,

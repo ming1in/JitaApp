@@ -13,6 +13,7 @@
     "@react-native-community/masked-view": "0.1.6",
     "eslint": "^6.8.0",
     "expo": "~37.0.3",
+    "expo-font": "^8.1.1",
     "firebase": "^7.14.2",
     "mem": "^4.0.0",
     "native-base": "^2.13.8",
@@ -28,7 +29,7 @@
     "react-navigation": "^4.3.8",
     "react-navigation-drawer": "^2.4.11",
     "react-navigation-stack": "^2.3.12",
-    "react-navigation-tabs": "^2.8.11"
+    "react-navigation-tabs": "^2.8.12"
   },
   "devDependencies": {
     "@babel/core": "^7.8.6",
