@@ -20,6 +20,6 @@ var firebaseConfig = {
    appId: APP_ID,
 };
 
-export default firebase
+export default firebaseConfig
 
 
