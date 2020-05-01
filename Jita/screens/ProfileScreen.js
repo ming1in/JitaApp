@@ -3,7 +3,6 @@ import { StyleSheet, View, Text } from 'react-native'
 
 
 const ProfileScreen = (props) => {
-
    return (
       <View>
          <Text>ProfileScreen</Text>
@@ -13,7 +12,7 @@ const ProfileScreen = (props) => {
 
 
 const styles = StyleSheet.create({
-   
+
 })
 
 export default ProfileScreen

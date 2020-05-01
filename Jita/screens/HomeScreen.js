@@ -17,7 +17,9 @@ const HomeScreen = (props) => {
 			<Button
 				title='ProfileScreen'
 				onPress={() => {
-					props.navigation.navigate('Profile')
+					firebase.auth().signOut().then(() => {
+						props.navigation.navigate('Aut')
+					})
 				}}
 			/>
 		</View>

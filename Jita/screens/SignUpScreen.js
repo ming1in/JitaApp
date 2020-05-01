@@ -48,13 +48,6 @@ const SignUpScreen = (props) => {
 				<Text style={styles.title}>Sign Up</Text>
 				<View style={styles.signUpContainer}>
 					<AuthTextInput
-						onChangeText={(name) => setName(name)}
-						icon="md-person"
-						placeholder="Name"
-						placeholderTextColor="white"
-						value={name}
-					/>
-					<AuthTextInput
 						onChangeText={(email) => setEmail(email)}
 						icon="ios-mail"
 						placeholder="Email"
@@ -77,7 +70,6 @@ const SignUpScreen = (props) => {
 						<Switch
 							value={student}
 							onValueChange={(student) => {
-								console.log(student)
 								setStudent(student)
 							}}
 						/>
