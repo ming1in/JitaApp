@@ -9,7 +9,6 @@ import ProfileScreen from '../screens/ProfileScreen';
 import LoadingScreen from '../screens/LoadingScreen';
 import SignUpScreen from '../screens/SignUpScreen';
 import LogInScreen from '../screens/LogInScreen';
-import UserRegistrationScreen from '../screens/UserRegistrationScreen'
 import Colors from '../constants/Colors';
 
 const AuthNavigator = createSwitchNavigator(
@@ -18,12 +17,6 @@ const AuthNavigator = createSwitchNavigator(
 		LogIn: { screen: LogInScreen },
 	}
 );
-
-const RegistrationNavigator = createStackNavigator(
-	{
-		UserRegistration: { screen: UserRegistrationScreen }
-	}
-)
 
 const ProfileTabNavigator = createBottomTabNavigator(
 	{
@@ -53,7 +46,6 @@ const ProfileTabNavigator = createBottomTabNavigator(
 
 const MainNavigator = createSwitchNavigator({
 	Loading: { screen: LoadingScreen },
-	Registration: RegistrationNavigator,
 	Auth: AuthNavigator,
 	Home: ProfileTabNavigator
 })
