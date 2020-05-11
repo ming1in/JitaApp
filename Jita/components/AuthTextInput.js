@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
   authTextInput: {
     flexDirection: 'row',
     height: 40,
-    width: 285,
+    width: 325,
     alignItems: 'center',
     borderBottomWidth: 1,
     borderBottomColor: 'white',

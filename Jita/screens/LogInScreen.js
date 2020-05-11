@@ -24,7 +24,7 @@ const LogInScreen = (props) => {
 			.auth()
 			.signInWithEmailAndPassword(email, password)
 			.then((user) => 
-				props.navigation.navigate('Loading')
+				props.navigation.navigate('Home')
 			)
 			.catch((error) => {
 				alert(error)
