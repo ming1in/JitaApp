@@ -17,7 +17,6 @@ import AuthTextInput from '../components/AuthTextInput';
 import Colors from '../constants/Colors';
 
 const SignUpScreen = (props) => {
-	const [ name, setName ] = useState('');
 	const [ email, setEmail ] = useState('');
 	const [ password, setPassword ] = useState('');
 	const [ student, setStudent ] = useState(false);
@@ -26,13 +25,7 @@ const SignUpScreen = (props) => {
 		firebase
 			.auth()
 			.createUserWithEmailAndPassword(email, password)
-			.then(() => {
-				if (student) {
-					props.navigation.navigate('Registration')
-				} else {
-					props.navigation.navigate('Home')
-				};
-			})
+			.then(student ? props.navigation.navigate('Registration') : props.navigation.navigate('Home'))
 			.catch((error) => {
 				alert(error);
 			});
@@ -77,7 +70,14 @@ const SignUpScreen = (props) => {
 				</View>
 
 				<View style={styles.signUpButtonContainer}>
-					<Button style={styles.signUpButton} title="Sign Up" color="white" onPress={signUpHandler} />
+					<Button
+						style={styles.signUpButton}
+						title="Sign Up" color="white"
+						onPress={() => {
+							signUpHandler()
+							student ? props.navigation.navigate('Registration') : props.navigation.navigate('Home')
+						}}
+					/>
 				</View>
 
 				<View style={styles.logInContainer}>
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
 		alignItems: 'center'
 	},
 	title: {
-		top: 95,
+		top: '25%',
 		color: 'white',
 		fontSize: 72,
 		width: 'auto'
@@ -111,14 +111,14 @@ const styles = StyleSheet.create({
 	signUpContainer: {
 		width: '80%',
 		alignItems: 'center',
-		top: '30%'
+		top: '37%'
 	},
 	signUpButtonContainer: {
 		height: 50,
 		alignItems: 'center',
 		justifyContent: 'center',
 		width: '70%',
-		top: '32%',
+		top: '40%',
 		borderWidth: 1,
 		borderColor: 'white'
 	},
@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
 	},
 	logInContainer: {
 		flexDirection: 'row',
-		top: '82%'
+		top: '89%'
 	},
 	logInText: {
 		color: 'white'
